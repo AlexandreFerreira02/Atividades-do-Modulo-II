@@ -1,120 +1,290 @@
 # Atividade 1
 
-class Animal:
-    def falar(self):
-        pass
+class Carro:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
 
+carro1 = Carro('Toyota', 'Corolla')
+carro2 = Carro('Ford', 'Fiesta')
 
-class Cachorro(Animal):
-    def falar(self):
-        print('Au au!')
-
-
-class Gato(Animal):
-    def falar(self):
-        print('Miau!')
-
-
-animais = [Cachorro(), Gato(), Cachorro(), Gato()]
-
-for animal in animais:
-    animal.falar()
+print('Carro 1:', carro1.marca, '-', carro1.modelo)
+print('Carro 2:', carro2.marca, '-', carro2.modelo)
 
 # Atividade 2
 
-import math
+class Cachorro:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
 
-class Forma:
-    def area(self):
-        pass
+    def falar(self):
+        print('Au au, meu nome é', self.nome, 'e tenho', self.idade, 'anos')
 
-
-class Quadrado(Forma):
-    def __init__(self, lado):
-        self.lado = lado
-
-    def area(self):
-        return self.lado * self.lado
-
-
-class Circulo(Forma):
-    def __init__(self, raio):
-        self.raio = raio
-
-    def area(self):
-        return math.pi * self.raio * self.raio
-
-
-def mostrar_areas(lista_formas):
-    for forma in lista_formas:
-        print('Área:', forma.area())
-
-
-formas = [
-    Quadrado(4),
-    Circulo(3),
-    Quadrado(2)
-]
-
-mostrar_areas(formas)
+dog1 = Cachorro('Amora', 10)
+dog1.falar()
 
 # Atividade 3
 
-class Funcionario:
-    def salario(self):
-        pass
+class Livro:
+    def __init__(self, titulo, autor, ano):
+        self.titulo = titulo
+        self.autor = autor
+        self.ano = ano
 
+livro1 = Livro('Dom Casmurro', 'Machado de Assis', 1899)
+livro2 = Livro('A Hora da Estrela', 'Clarice Lispector', 1977)
+livro3 = Livro('1984', 'George Orwell', 1949)
 
-class Gerente(Funcionario):
-    def salario(self):
-        return 5000
-
-
-class Estagiario(Funcionario):
-    def salario(self):
-        return 1500
-
-
-funcionarios = [
-    Gerente(),
-    Estagiario(),
-    Gerente()
-]
-
-for funcionario in funcionarios:
-    print('Salário:', funcionario.salario())
+print('Livro 1:', livro1.titulo, '-', livro1.autor, '-', livro1.ano)
+print('Livro 2:', livro2.titulo, '-', livro2.autor, '-', livro2.ano)
+print('Livro 3:', livro3.titulo, '-', livro3.autor, '-', livro3.ano)
 
 # Atividade 4
 
-class Veiculo:
-    def mover(self):
-        pass
+class Carro:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+
+    def dirigir(self):
+        print('O carro está em movimento')
 
 
-class Carro(Veiculo):
-    def mover(self):
-        print('Dirigindo...')
+carro1 = Carro('Honda', 'Civic')
+carro1.dirigir()
+
+# Atividade 5
+
+class Cachorro:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def falar(self):
+        print('Au au, meu nome é', self.nome, 'e tenho', self.idade, 'anos')
+
+    def aniversario(self):
+        self.idade += 1
+        print(self.nome, 'fez aniversário! Agora tem', self.idade, 'anos')
+
+dog1 = Cachorro('Amora', 10)
+
+dog1.falar()
+dog1.aniversario()
+
+# Atividade 6
+
+class ContaBancaria:
+    def __init__(self, titular, saldo=0):
+        self.titular = titular
+        self.saldo = saldo
+
+    def depositar(self, valor):
+        if valor > 0:
+            self.saldo += valor
+            print(f'Depósito de R$ {valor} realizado. Saldo atual: R$ {self.saldo}')
+        else:
+            print('Valor de depósito inválido.')
+
+    def sacar(self, valor):
+        if valor > 0:
+            if self.saldo >= valor:
+                self.saldo -= valor
+                print(f'Saque de R$ {valor} realizado. Saldo atual: R$ {self.saldo}')
+            else:
+                print('Saldo insuficiente para o saque.')
+        else:
+            print('Valor de saque inválido.')
+
+conta1 = ContaBancaria('Maria', 100)
+
+conta1.depositar(50)
+conta1.sacar(30)
+conta1.sacar(150)  
+
+# Atividade 7
+
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+class Estudante(Pessoa):
+    def __init__(self, nome, idade, matricula, curso):
+        super().__init__(nome, idade)  
+        self.matricula = matricula
+        self.curso = curso
+
+    def mostrar_dados(self):
+        print(f'Nome: {self.nome}')
+        print(f'Idade: {self.idade}')
+        print(f'Matrícula: {self.matricula}')
+        print(f'Curso: {self.curso}')
+
+estudante1 = Estudante('Alexandre', 23, '01', 'Python')
+estudante1.mostrar_dados()
+
+# Atividade 8
+
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+class Funcionario(Pessoa):
+    def __init__(self, nome, idade, salario):
+        super().__init__(nome, idade)  
+        self.salario = salario
+
+    def calcular_13_salario(self):
+        decimo_terceiro = self.salario  
+        print(f'{self.nome} receberá R$ {decimo_terceiro} de 13º salário.')
+
+funcionario1 = Funcionario('Alexandre', 23, 5000)
+funcionario1.calcular_13_salario()
+
+funcionario2 = Funcionario('Sophia', 18, 3500)
+funcionario2.calcular_13_salario()
+
+# Atividade 9
+
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+class Funcionario(Pessoa):
+    def __init__(self, nome, idade, salario):
+        super().__init__(nome, idade)
+        self.salario = salario
+
+    def calcular_13_salario(self):
+        print(f'{self.nome} receberá R$ {self.salario} de 13º salário.')
+
+class Professor(Funcionario):
+    def __init__(self, nome, idade, salario, disciplina):
+        super().__init__(nome, idade, salario)
+        self.disciplina = disciplina
+
+    def lecionar(self):
+        print(f'Professor {self.nome} leciona {self.disciplina}.')
+
+professor1 = Professor('Alexandre', 23, 6000, 'Matemática')
+professor1.lecionar()
+professor1.calcular_13_salario()
+
+# Atividade 10 
+
+class Artista:
+    def apresentar(self):
+        print('Sou artista')
+
+class Programador:
+    def apresentar(self):
+        print('Sou programador')
+
+class PessoaMultiTalento(Artista, Programador):
+    pass
+
+pessoa = PessoaMultiTalento()
+pessoa.apresentar()
+
+# Atividade 11 
+
+class Artista:
+    def apresentar(self):
+        print('Sou artista')
+        super().apresentar()  
+
+class Programador:
+    def apresentar(self):
+        print('Sou programador')
+        super().apresentar()  
+
+class PessoaBase:
+    def apresentar(self):
+        pass  
+
+class PessoaMultiTalento(Artista, Programador, PessoaBase):
+    pass
+
+pessoa = PessoaMultiTalento()
+pessoa.apresentar()
+
+# Atividade 12
+
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def mostrar_dados(self):
+        print(f'Nome: {self.nome}, Idade: {self.idade}')
+
+class Aluno(Pessoa):
+    def __init__(self, nome, idade, matricula):
+        super().__init__(nome, idade)
+        self.matricula = matricula
+        self.notas = []
+
+    def cadastrar_nota(self, nota):
+        if 0 <= nota <= 10:
+            self.notas.append(nota)
+            print(f'Nota {nota} cadastrada para {self.nome}')
+        else:
+            print('Nota inválida! Deve estar entre 0 e 10.')
+
+    def calcular_media(self):
+        if self.notas:
+            media = sum(self.notas) / len(self.notas)
+            return media
+        else:
+            return 0
+
+    def mostrar_dados(self):
+        super().mostrar_dados()
+        print(f'Matrícula: {self.matricula}')
+        print(f'Notas: {self.notas}')
+        print(f'Média: {self.calcular_media():.2f}')
+
+class Professor(Pessoa):
+    def __init__(self, nome, idade, disciplina, salario):
+        super().__init__(nome, idade)
+        self.disciplina = disciplina
+        self.salario = salario
+
+    def mostrar_dados(self):
+        super().mostrar_dados()
+        print(f'Disciplina: {self.disciplina}')
+        print(f'Salário: R$ {self.salario}')
+
+aluno1 = Aluno('Alexandre', 23, '01')
+aluno1.cadastrar_nota(8)
+aluno1.cadastrar_nota(7)
+aluno1.cadastrar_nota(9)
+
+aluno2 = Aluno('Sophia', 17, '02')
+aluno2.cadastrar_nota(6)
+aluno2.cadastrar_nota(9)
+
+professor1 = Professor('Carlos', 40, 'Matemática', 5000)
+professor2 = Professor('Ronaldo', 35, 'História', 4500)
+
+print('\n--- Alunos ---')
+aluno1.mostrar_dados()
+aluno2.mostrar_dados()
+
+print('\n--- Professores ---')
+professor1.mostrar_dados()
+professor2.mostrar_dados()
 
 
-class Bicicleta(Veiculo):
-    def mover(self):
-        print('Pedalando...')
 
 
-class Aviao(Veiculo):
-    def mover(self):
-        print('Voando...')
 
 
-veiculos = [
-    Carro(),
-    Bicicleta(),
-    Aviao(),
-    Carro()
-]
 
-for veiculo in veiculos:
-    veiculo.mover()
 
 
 
