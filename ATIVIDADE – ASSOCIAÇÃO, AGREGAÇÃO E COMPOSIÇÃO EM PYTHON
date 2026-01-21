@@ -1,0 +1,77 @@
+# Atividade 1
+
+class Motor:
+    def ligar(self):
+        print('Motor ligado.')
+
+
+class Carro:
+    def __init__(self):
+        self.motor = Motor()  # composição
+
+    def ligar_carro(self):
+        print('Carro ligado.')
+        self.motor.ligar()
+
+
+carro = Carro()
+carro.ligar_carro()
+
+# Atividade 2
+
+class Professor:
+    def __init__(self, nome):
+        self.nome = nome
+
+
+class Universidade:
+    def __init__(self, nome):
+        self.nome = nome
+        self.professores = []  
+
+    def adicionar_professor(self, professor):
+        self.professores.append(professor)
+
+    def listar_professores(self):
+        for professor in self.professores:
+            print(professor.nome)
+
+
+prof1 = Professor('Alexandre')
+prof2 = Professor('Sophia')
+
+universidade = Universidade('Softex')
+
+universidade.adicionar_professor(prof1)
+universidade.adicionar_professor(prof2)
+
+universidade.listar_professores()
+
+# Atividade 3 
+
+class Autor:
+    def __init__(self, nome):
+        self.nome = nome
+
+
+class Livro:
+    def __init__(self, titulo, autor):
+        self.titulo = titulo
+        self.autor = autor 
+
+    def detalhes(self):
+        print('Livro:', self.titulo)
+        print('Autor:', self.autor.nome)
+
+
+autor1 = Autor('Machado de Assis')
+autor2 = Autor('Clarice Lispector')
+
+livro1 = Livro('Dom Casmurro', autor1)
+livro2 = Livro('Memórias Póstumas', autor1)
+livro3 = Livro('A Hora da Estrela', autor2)
+
+livro1.detalhes()
+livro2.detalhes()
+livro3.detalhes()
+

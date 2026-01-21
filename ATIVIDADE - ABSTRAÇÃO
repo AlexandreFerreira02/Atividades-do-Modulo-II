@@ -1,0 +1,90 @@
+# Atividade 1
+
+from abc import ABC, abstractmethod
+
+class Pagamento(ABC):
+    def __init__(self, valor):
+        self.valor = valor
+
+    @abstractmethod
+    def processar_pagamento(self):
+        pass
+
+# Atividade 2
+
+from abc import ABC, abstractmethod
+
+class Pagamento(ABC):
+    def __init__(self, valor):
+        self.valor = valor
+
+    @abstractmethod
+    def processar_pagamento(self):
+        pass
+
+
+class CartaoCredito(Pagamento):
+    def processar_pagamento(self):
+        print('Pagamento de R$', self.valor, 'realizado com Cartão de Crédito.')
+
+
+class Pix(Pagamento):
+    def processar_pagamento(self):
+        print('Pagamento de R$', self.valor, 'realizado via Pix.')
+
+
+class Boleto(Pagamento):
+    def processar_pagamento(self):
+        print('Pagamento de R$', self.valor, 'gerado via Boleto.')
+
+# Atividade 3
+
+from abc import ABC, abstractmethod
+
+class Pagamento(ABC):
+    def __init__(self, valor):
+        self.valor = valor
+
+    @abstractmethod
+    def processar_pagamento(self):
+        pass
+
+class Cancelavel(ABC):
+    @abstractmethod
+    def cancelar_pagamento(self):
+        pass
+
+
+class CartaoCredito(Pagamento, Cancelavel):
+    def processar_pagamento(self):
+        print('Pagamento de R$', self.valor, 'realizado com Cartão de Crédito.')
+
+    def cancelar_pagamento(self):
+        print('Pagamento com Cartão de Crédito cancelado.')
+
+
+class Pix(Pagamento, Cancelavel):
+    def processar_pagamento(self):
+        print('Pagamento de R$', self.valor, 'realizado via Pix.')
+
+    def cancelar_pagamento(self):
+        print('Pagamento via Pix cancelado.')
+
+
+class Boleto(Pagamento, Cancelavel):
+    def processar_pagamento(self):
+        print('Pagamento de R$', self.valor, 'gerado via Boleto.')
+
+    def cancelar_pagamento(self):
+        print('Boleto cancelado.')
+
+pagamentos = [
+    CartaoCredito(250),
+    Pix(120),
+    Boleto(300)
+]
+
+for pagamento in pagamentos:
+    pagamento.processar_pagamento()
+    pagamento.cancelar_pagamento()
+
