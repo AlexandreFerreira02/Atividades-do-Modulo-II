@@ -1,0 +1,65 @@
+# Atividade 1
+
+class ContaBancaria:
+    def __init__(self):
+        self.__saldo = 0
+
+    def depositar(self, valor):
+        self.__saldo = self.__saldo + valor
+
+    def sacar(self, valor):
+        self.__saldo = self.__saldo - valor
+
+    def ver_saldo(self):
+        return self.__saldo
+
+
+conta = ContaBancaria()
+
+conta.depositar(100)
+conta.sacar(30)
+
+print('Saldo atual:', conta.ver_saldo())
+
+# Atividade 2
+
+class Pessoa:
+    def __init__(self, nome, anoNasceu):
+        self.nome = nome          
+        self._anoNasceu = anoNasceu  
+
+
+pessoa = Pessoa('Alexandre', 2002)
+
+print('Nome:', pessoa.nome)
+print('Ano que nasceu:', pessoa._anoNasceu)
+
+# Atividade 3
+
+class ContaBancaria:
+    def __init__(self):
+        self.__saldo = 0
+
+    @property
+    def saldo(self):
+        return self.__saldo
+
+    @saldo.setter
+    def saldo(self, valor):
+        if valor >= 0:
+            self.__saldo = valor
+        else:
+            print('Saldo não pode ser negativo')
+
+
+conta = ContaBancaria()
+
+conta.saldo = 100
+print('Saldo:', conta.saldo)
+
+conta.saldo = -50
+print('Saldo:', conta.saldo)
+
+# Atividade 4
+
+
